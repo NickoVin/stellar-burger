@@ -38,3 +38,20 @@ export type TUser = {
 };
 
 export type TTabMode = 'bun' | 'sauce' | 'main';
+
+export type IngredientsState = {
+  ingredients: TIngredient[];
+  loading: boolean;
+  error: string | null;
+};
+
+export type ConstructorState = {
+  bun: TConstructorIngredient | null;
+  ingredients: TConstructorIngredient[];
+};
+
+export type OrderBuilderState = {
+  order: TOrder | null;
+  name: string | null;
+  orderRequest: boolean;
+};
