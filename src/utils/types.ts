@@ -1,4 +1,4 @@
-import exp from "constants";
+import exp from 'constants';
 
 export type TIngredient = {
   _id: string;
@@ -71,4 +71,4 @@ export type TProtectedRouteProps = {
 
 export type TOrderState = {
   orders: TOrder[];
-}
+};
