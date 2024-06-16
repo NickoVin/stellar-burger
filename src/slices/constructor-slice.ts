@@ -1,8 +1,8 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { ConstructorState } from '@utils-types';
+import { TConstructorState } from '@utils-types';
 import { v4 as uuidv4 } from 'uuid';
 
-const initialState: ConstructorState = {
+const initialState: TConstructorState = {
   bun: null,
   ingredients: []
 };
@@ -23,10 +23,10 @@ const constructorSlice = createSlice({
         (ingredient) => ingredient.id != action.payload.id
       );
     },
-    resetConstructor: (state: ConstructorState) => (state = initialState)
+    resetConstructor: (state: TConstructorState) => (state = initialState)
   },
   selectors: {
-    getConstructorSelector: (state: ConstructorState) => state || initialState
+    getConstructorSelector: (state: TConstructorState) => state || initialState
   }
 });
 

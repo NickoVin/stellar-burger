@@ -1,8 +1,8 @@
 import { orderBurgerApi } from '@api';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { OrderBuilderState } from '@utils-types';
+import { TOrderBuilderState } from '@utils-types';
 
-const initialState: OrderBuilderState = {
+const initialState: TOrderBuilderState = {
   order: null,
   name: null,
   orderRequest: false

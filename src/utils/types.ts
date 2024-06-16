@@ -39,19 +39,30 @@ export type TUser = {
 
 export type TTabMode = 'bun' | 'sauce' | 'main';
 
-export type IngredientsState = {
+export type TIngredientsState = {
   ingredients: TIngredient[];
   loading: boolean;
   error: string | null;
 };
 
-export type ConstructorState = {
+export type TConstructorState = {
   bun: TConstructorIngredient | null;
   ingredients: TConstructorIngredient[];
 };
 
-export type OrderBuilderState = {
+export type TOrderBuilderState = {
   order: TOrder | null;
   name: string | null;
   orderRequest: boolean;
+};
+
+export type TUsersState = {
+  isAuthChecked: boolean;
+  user: TUser | null;
+  error: string | null;
+};
+
+export type TProtectedRouteProps = {
+  onlyUnAuth?: boolean;
+  component: React.JSX.Element;
 };

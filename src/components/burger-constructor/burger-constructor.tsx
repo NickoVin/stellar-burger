@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from '../../services/store';
 import { buildOrder, resetOrder } from '../../slices/order-builder-slice';
 import { resetConstructor } from '../../slices/constructor-slice';
+import { getAuthChecked, getUser } from '../../slices/user-slice';
 
 export const BurgerConstructor: FC = () => {
   /** TODO: взять переменные constructorItems, orderRequest и orderModalData из стора */
@@ -14,8 +15,14 @@ export const BurgerConstructor: FC = () => {
   const constructorItems = useSelector((state) => state.burgerConstructor);
   const { order, orderRequest } = useSelector((state) => state.orderBuilder);
 
+  const isAuthChecked = useSelector(getAuthChecked);
+  const user = useSelector(getUser);
+
   const onOrderClick = () => {
-    // TODO: Нужно проверить авторизацию
+    if (!isAuthChecked || !user) {
+      navigate('/login');
+      return;
+    }
 
     if (
       !constructorItems.bun ||
