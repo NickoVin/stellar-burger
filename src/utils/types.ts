@@ -1,3 +1,5 @@
+import exp from "constants";
+
 export type TIngredient = {
   _id: string;
   name: string;
@@ -66,3 +68,7 @@ export type TProtectedRouteProps = {
   onlyUnAuth?: boolean;
   component: React.JSX.Element;
 };
+
+export type TOrderState = {
+  orders: TOrder[];
+}
