@@ -3,9 +3,9 @@ import { FC, SyntheticEvent, useEffect, useState } from 'react';
 import { useDispatch } from '../../services/store';
 import { getUser } from '../../slices/user-slice';
 import { useSelector } from 'react-redux';
+import { update } from '../../actions/user-actions';
 
 export const Profile: FC = () => {
-  /** TODO: взять переменную из стора */
   const dispatch = useDispatch();
   const user = useSelector(getUser);
 
@@ -30,7 +30,7 @@ export const Profile: FC = () => {
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    // TODO: Нужно написать редьюсер для обновления пользовательских данных
+    dispatch(update(formValue));
   };
 
   const handleCancel = (e: SyntheticEvent) => {

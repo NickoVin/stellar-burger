@@ -5,7 +5,8 @@ import {
   registerUserApi,
   TAuthResponse,
   logoutApi,
-  getUserApi
+  getUserApi,
+  updateUserApi
 } from '@api';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { deleteCookie, setCookie } from '../utils/cookie';
@@ -64,7 +65,8 @@ export const checkAuth = createAsyncThunk<
 
 export const update = createAsyncThunk(
   'user/update',
-  async ({ email, name, password }: TRegisterData) => null
+  async ({ email, name, password }: TRegisterData) =>
+    updateUserApi({ email, name, password })
 );
 
 const trySetTokens = (authResponse: TAuthResponse): boolean => {
