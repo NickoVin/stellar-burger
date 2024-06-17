@@ -1,6 +1,12 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { TUser, TUsersState } from '@utils-types';
-import { login, logout, register, update } from '../actions/user-actions';
+import {
+  checkAuth,
+  login,
+  logout,
+  register,
+  update
+} from '../actions/user-actions';
 
 const initialState: TUsersState = {
   isAuthChecked: false,
@@ -55,6 +61,10 @@ const userSlice = createSlice({
       .addCase(update.fulfilled, (state, action) => {
         state.isAuthChecked = true;
         state.user = action.payload.user;
+      })
+      .addCase(checkAuth.rejected, () => {
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
       });
   }
 });
