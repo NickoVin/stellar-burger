@@ -28,7 +28,12 @@ const constructorSlice = createSlice({
         (ingredient) => ingredient.id != action.payload.id
       );
     },
-    resetConstructor: (state: TConstructorState) => (state = initialState)
+    resetConstructor: (state: TConstructorState) => (state = initialState),
+    moveConstructorItem: (state, action) => {
+      const { fromIndex, toIndex } = action.payload;
+      const [movedItem] = state.ingredients.splice(fromIndex, 1);
+      state.ingredients.splice(toIndex, 0, movedItem);
+    }
   },
   selectors: {
     getConstructorSelector: (state: TConstructorState) => state || initialState
@@ -37,5 +42,9 @@ const constructorSlice = createSlice({
 
 export const constructorReducer = constructorSlice.reducer;
 export const { getConstructorSelector } = constructorSlice.selectors;
-export const { addConstructorItem, removeConstructorItem, resetConstructor } =
-  constructorSlice.actions;
+export const {
+  addConstructorItem,
+  removeConstructorItem,
+  resetConstructor,
+  moveConstructorItem
+} = constructorSlice.actions;
