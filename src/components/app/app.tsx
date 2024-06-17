@@ -61,6 +61,7 @@ function App() {
           path='/profile/orders'
           element={<OnlyAuth component={<ProfileOrders />} />}
         />
+        <Route path='/ingredients/:id' element={<IngredientDetails />} />
       </Routes>
 
       {backgroundLocation && (
