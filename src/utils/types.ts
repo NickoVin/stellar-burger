@@ -1,3 +1,5 @@
+import exp from 'constants';
+
 export type TIngredient = {
   _id: string;
   name: string;
@@ -38,3 +40,35 @@ export type TUser = {
 };
 
 export type TTabMode = 'bun' | 'sauce' | 'main';
+
+export type TIngredientsState = {
+  ingredients: TIngredient[];
+  loading: boolean;
+  error: string | null;
+};
+
+export type TConstructorState = {
+  bun: TConstructorIngredient | null;
+  ingredients: TConstructorIngredient[];
+};
+
+export type TOrderBuilderState = {
+  order: TOrder | null;
+  name: string | null;
+  orderRequest: boolean;
+};
+
+export type TUsersState = {
+  isAuthChecked: boolean;
+  user: TUser | null;
+  error: string | null;
+};
+
+export type TProtectedRouteProps = {
+  onlyUnAuth?: boolean;
+  component: React.JSX.Element;
+};
+
+export type TOrderState = {
+  orders: TOrder[];
+};
